@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/skf/etl-base/model"
-	"github.com/skf/etl-base/s3aws"
+	"github.com/anhamdan/etl-base/model"
+	"github.com/anhamdan/etl-base/s3aws"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

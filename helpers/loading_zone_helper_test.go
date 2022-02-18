@@ -3,7 +3,7 @@ package helpers
 import (
 	"errors"
 	"fmt"
-	"github.com/skf/etl-base/s3aws"
+	"github.com/anhamdan/etl-base/s3aws"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

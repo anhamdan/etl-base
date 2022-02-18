@@ -2,11 +2,11 @@ package helpers
 
 import (
 	"encoding/json"
+	"github.com/anhamdan/etl-base/constants"
+	"github.com/anhamdan/etl-base/sfnaws"
+	"github.com/anhamdan/etl-base/sqsaws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sqs"
-	"github.com/skf/etl-base/constants"
-	"github.com/skf/etl-base/sfnaws"
-	"github.com/skf/etl-base/sqsaws"
 	"log"
 	"sync"
 	"time"
