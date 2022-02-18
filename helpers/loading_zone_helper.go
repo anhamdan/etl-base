@@ -2,8 +2,8 @@ package helpers
 
 import (
 	"encoding/json"
-	"etl-base/constants"
-	"etl-base/s3aws"
+	"github.com/skf/etl-base/constants"
+	"github.com/skf/etl-base/s3aws"
 	"log"
 )
 

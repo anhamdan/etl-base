@@ -1,14 +1,14 @@
 package main
 
 import (
-	"etl-base/config"
-	"etl-base/helpers"
-	"etl-base/s3aws"
-	"etl-base/sfnaws"
-	"etl-base/sqsaws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/sqs"
+	"github.com/skf/etl-base/config"
+	"github.com/skf/etl-base/helpers"
+	"github.com/skf/etl-base/s3aws"
+	"github.com/skf/etl-base/sfnaws"
+	"github.com/skf/etl-base/sqsaws"
 	"log"
 	"sync"
 )

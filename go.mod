@@ -1,4 +1,4 @@
-module etl-base
+module github.com/skf/etl-base
 
 go 1.17
 

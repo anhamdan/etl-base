@@ -3,9 +3,9 @@ package helpers
 import (
 	"encoding/json"
 	"errors"
-	"etl-base/model"
-	"etl-base/s3aws"
 	"fmt"
+	"github.com/skf/etl-base/model"
+	"github.com/skf/etl-base/s3aws"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

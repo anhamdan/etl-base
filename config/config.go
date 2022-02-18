@@ -1,7 +1,7 @@
 package config
 
 import (
-	"etl-base/helpers"
+	"github.com/skf/etl-base/helpers"
 )
 
 type Config struct {

@@ -1,7 +1,7 @@
 package helpers
 
 import (
-	"etl-base/s3aws"
+	"github.com/skf/etl-base/s3aws"
 )
 
 type LandingZoneHelper interface {
