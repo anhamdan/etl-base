@@ -13,16 +13,16 @@ import (
 )
 
 type BaseHelper interface {
-	initAwsSession() (*session.Session, error)
-	initLandingZone(awsSession *session.Session, importConfig config.Config) *landingZoneHelper
-	initLoadingZone(awsSession *session.Session, importConfig config.Config) *loadingZoneHelper
-	initWfmHelper(awsSession *session.Session, importConfig config.Config) *workflowManagerHelper
-	initChannels() (chan *sqs.Message, chan error)
-	handleErrMsg(errChan chan error, wg *sync.WaitGroup)
+}
+type baseHelper struct {
+	kola string
 }
 
-func initConfig(Type string) config.Config {
-	return config.Initialize(Type)
+func NewBaseHelper(kola string) *baseHelper {
+	helper := baseHelper{
+		kola: kola,
+	}
+	return &helper
 }
 
 func initAwsSession() (*session.Session, error) {
@@ -36,6 +36,9 @@ func initAwsSession() (*session.Session, error) {
 	}
 
 	return awsSession, nil
+}
+func initConfig(Type string) config.Config {
+	return config.Initialize(Type)
 }
 
 func initLandingZone(awsSession *session.Session, importConfig config.Config) *landingZoneHelper {
