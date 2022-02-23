@@ -13,15 +13,17 @@ import (
 )
 
 type BaseHelper interface {
+	initAwsSession() (*session.Session, error)
+	initLandingZone(awsSession *session.Session, importConfig config.Config) *landingZoneHelper
+	initLoadingZone(awsSession *session.Session, importConfig config.Config) *loadingZoneHelper
+	initWfmHelper(awsSession *session.Session, importConfig config.Config) *workflowManagerHelper
+	initChannels() (chan *sqs.Message, chan error)
+	handleErrMsg(errChan chan error, wg *sync.WaitGroup)
 }
-type baseHelper struct {
-	kola string
-}
+type baseHelper struct{}
 
-func NewBaseHelper(kola string) *baseHelper {
-	helper := baseHelper{
-		kola: kola,
-	}
+func NewBaseHelper(typeOfImport string) *baseHelper {
+	helper := baseHelper{}
 	return &helper
 }
 
