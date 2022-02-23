@@ -12,6 +12,15 @@ import (
 	"sync"
 )
 
+type BaseHelper interface {
+	initAwsSession() (*session.Session, error)
+	initLandingZone(awsSession *session.Session, importConfig config.Config) *landingZoneHelper
+	initLoadingZone(awsSession *session.Session, importConfig config.Config) *loadingZoneHelper
+	initWfmHelper(awsSession *session.Session, importConfig config.Config) *workflowManagerHelper
+	initChannels() (chan *sqs.Message, chan error)
+	handleErrMsg(errChan chan error, wg *sync.WaitGroup)
+}
+
 func initConfig(Type string) config.Config {
 	return config.Initialize(Type)
 }
@@ -29,13 +38,13 @@ func initAwsSession() (*session.Session, error) {
 	return awsSession, nil
 }
 
-func initLandingZone(awsSession *session.Session, importConfig config.Config) interface{} {
+func initLandingZone(awsSession *session.Session, importConfig config.Config) *landingZoneHelper {
 	s3LandingZoneSession := s3.New(awsSession)
 	s3LandingZoneClient := s3aws.NewS3Client(s3LandingZoneSession, importConfig.LandingZoneConfig.S3Bucket)
 	return NewLandingZoneHelper(s3LandingZoneClient)
 }
 
-func initLoadingZone(awsSession *session.Session, importConfig config.Config) interface{} {
+func initLoadingZone(awsSession *session.Session, importConfig config.Config) *loadingZoneHelper {
 	s3LoadingZoneSession := s3.New(awsSession)
 	s3LoadingZoneClient := s3aws.NewS3Client(s3LoadingZoneSession, importConfig.LoadingZoneConfig.S3Bucket)
 	return NewLoadingZoneHelper(s3LoadingZoneClient, importConfig.LoadingZoneConfig)
